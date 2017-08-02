@@ -1,5 +1,8 @@
 package com.example.demo.services
 
+import org.springframework.stereotype.Component
+
+@Component
 class MyService {
 
     var numb : Int = 5
@@ -35,6 +38,10 @@ class MyService {
     fun printList() {
         val list = this.asList(1, 2, 3)
         list.stream().forEach(System.out::println)
+    }
+
+    fun template(x: String): String {
+        return x
     }
 
 }

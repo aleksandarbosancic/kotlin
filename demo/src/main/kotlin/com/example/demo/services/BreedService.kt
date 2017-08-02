@@ -3,20 +3,16 @@ package com.example.demo.services
 import com.example.demo.domain.models.Breed
 import com.example.demo.domain.models.dto.BreedDTO
 import com.example.demo.mapper.BreedMapper
-import org.springframework.beans.factory.annotation.Autowired
+import org.mapstruct.factory.Mappers
 import org.springframework.stereotype.Component
-import java.util.*
 
 /**
  * Breed service sould be java class not kotlin
  */
-//@Component
-class BreedService2 {
+@Component
+class BreedService {
 
-    @Autowired private
-    lateinit var breedMapper : BreedMapper
-
-    var col: java.util.Collection<Date>? = null
+    var breedMapper : BreedMapper = Mappers.getMapper(BreedMapper::class.java)
 
     fun getBreeds(): List<BreedDTO> {
 
@@ -31,13 +27,6 @@ class BreedService2 {
         return listOf(a, b)
     }
 
-//    fun post(breed: Breed): BreedDTO? {
-//        println(breedMapper)
-//        var v: BreedDTO = BreedDTO()
-//        var dto: BreedDTO = breedMapper.toDTO(breed)
-//        return dto
-//    }
-
-    //fun post1(breed: Breed): BreedDTO? = breedMapper.toDTO(breed) as BreedDTO
+    fun post(breed: Breed): BreedDTO = breedMapper.toDTO(breed)
 
 }
